@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.env
+
+# Catálogo pre-construido — se regenera en cada deploy de Vercel
+api/catalog.json
+
+*.log
+.DS_Store
+Thumbs.db
