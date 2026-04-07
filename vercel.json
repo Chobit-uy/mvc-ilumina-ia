@@ -1,6 +1,11 @@
 {
   "buildCommand": "node scripts/build-catalog.js && vite build",
   "outputDirectory": "dist",
+  "functions": {
+    "api/index.js": {
+      "includeFiles": "api/catalog.json"
+    }
+  },
   "rewrites": [
     { "source": "/api/:path*", "destination": "/api/index" }
   ]

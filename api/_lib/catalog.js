@@ -1,5 +1,7 @@
 'use strict';
 
+const fs = require('fs');
+const path = require('path');
 const { scrapeAllProducts, enrichCatalogWithSpecs } = require('./scraper');
 
 let catalog = [];
@@ -40,13 +42,16 @@ async function refreshCatalog() {
 async function initCatalog() {
   // En Vercel: carga el catálogo pre-construido en build time
   if (process.env.VERCEL) {
+    // Usar fs.readFileSync para leer el archivo generado en el build.
+    // El archivo api/catalog.json se incluye explícitamente vía includeFiles en vercel.json.
+    const catalogPath = path.join(__dirname, '../catalog.json');
     try {
-      const prebuilt = require('../catalog.json');
-      catalog = prebuilt;
+      const data = fs.readFileSync(catalogPath, 'utf-8');
+      catalog = JSON.parse(data);
       lastUpdate = new Date();
       console.log(`[catalog] ✅ ${catalog.length} productos cargados desde catálogo pre-construido`);
     } catch (e) {
-      console.warn('[catalog] ⚠️  catalog.json no encontrado — catálogo vacío');
+      console.warn('[catalog] ⚠️  catalog.json no encontrado:', e.message);
     }
     return;
   }
