@@ -33,6 +33,17 @@ app.use(
 
 app.use(express.json({ limit: '10kb' }));
 
+// ─── STRIP /api PREFIX ────────────────────────────────────────────────────────
+// En Vercel, el rewrite envia la URL completa (/api/health, /api/ask, etc.)
+// al handler. Este middleware la normaliza para que las rutas de Express
+// funcionen igual en dev local (donde el proxy de Vite ya quita /api) y prod.
+app.use((req, _res, next) => {
+  if (req.url.startsWith('/api')) {
+    req.url = req.url.replace(/^\/api/, '') || '/';
+  }
+  next();
+});
+
 // ─── ENDPOINTS ───────────────────────────────────────────────────────────────
 
 app.get('/health', (_, res) => {
