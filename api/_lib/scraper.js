@@ -8,14 +8,10 @@ const cheerio = require('cheerio');
  * Agregar más URLs de categorías acá para ampliar el catálogo.
  */
 const CATALOG_URLS = [
-  'https://www.mvcequipamientos.com/c/iluminacion/focos-street/focos-solares-de-calle/',
+  'https://www.mvcequipamientos.com/c/todos-los-productos-solares-iluminacion-solar-camaras-solares-reflectores-solares-parlantes-solares-bateria-solar/',
+  'https://www.mvcequipamientos.com/c/todos-los-productos-solares-iluminacion-solar-camaras-solares-reflectores-solares-parlantes-solares-bateria-solar/iluminacin-solar-premium/',
   'https://www.mvcequipamientos.com/c/seguridad/reflectores-solares/',
-  'https://www.mvcequipamientos.com/c/todos-los-productos-solares-iluminacion-solar-camaras-solares-reflectores-solares-parlantes-solares-bateria-solar/artefactos-exteriores-solares/',
-  'https://www.mvcequipamientos.com/c/todos-los-productos-solares-iluminacion-solar-camaras-solares-reflectores-solares-parlantes-solares-bateria-solar/artefactos-exteriores-solares/page/3/',
-  'https://www.mvcequipamientos.com/c/todos-los-productos-solares-iluminacion-solar-camaras-solares-reflectores-solares-parlantes-solares-bateria-solar/artefactos-exteriores-solares/page/4/',
-  'https://www.mvcequipamientos.com/c/todos-los-productos-solares-iluminacion-solar-camaras-solares-reflectores-solares-parlantes-solares-bateria-solar/artefactos-exteriores-solares/page/5/',
-  'https://www.mvcequipamientos.com/c/todos-los-productos-solares-iluminacion-solar-camaras-solares-reflectores-solares-parlantes-solares-bateria-solar/artefactos-exteriores-solares/page/6/',
-  'https://www.mvcequipamientos.com/c/todos-los-productos-solares-iluminacion-solar-camaras-solares-reflectores-solares-parlantes-solares-bateria-solar/artefactos-exteriores-solares/page/2/',
+  'https://www.mvcequipamientos.com/c/iluminacion/focos-street/focos-solares-de-calle/',
 ];
 
 const HEADERS = {
