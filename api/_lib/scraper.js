@@ -8,10 +8,10 @@ const cheerio = require('cheerio');
  * Agregar más URLs de categorías acá para ampliar el catálogo.
  */
 const CATALOG_URLS = [
-  'https://www.mvcequipamientos.com/c/todos-los-productos-solares-iluminacion-solar-camaras-solares-reflectores-solares-parlantes-solares-bateria-solar',
-  'https://www.mvcequipamientos.com/c/todos-los-productos-solares-iluminacion-solar-camaras-solares-reflectores-solares-parlantes-solares-bateria-solar/iluminacin-solar-premium',
-  'https://www.mvcequipamientos.com/c/seguridad/reflectores-solares',
-  'https://www.mvcequipamientos.com/c/iluminacion/focos-street/focos-solares-de-calle',
+  'https://www.mvcequipamientos.com/c/todos-los-productos-solares-iluminacion-solar-camaras-solares-reflectores-solares-parlantes-solares-bateria-solar/',
+  'https://www.mvcequipamientos.com/c/todos-los-productos-solares-iluminacion-solar-camaras-solares-reflectores-solares-parlantes-solares-bateria-solar/iluminacin-solar-premium/',
+  'https://www.mvcequipamientos.com/c/seguridad/reflectores-solares/',
+  'https://www.mvcequipamientos.com/c/iluminacion/focos-street/focos-solares-de-calle/',
 ];
 
 const HEADERS = {
@@ -111,8 +111,7 @@ async function scrapeCategoryUrl(baseUrl) {
   let page = 1;
 
   while (page <= 20) {
-    const base = baseUrl.replace(/\/$/, '');
-    const url = page === 1 ? base : `${base}/page/${page}/`;
+    const url = page === 1 ? baseUrl : `${baseUrl}page/${page}/`;
 
     try {
       const { data } = await axios.get(url, {
